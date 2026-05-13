@@ -1,6 +1,7 @@
 import { useState } from "react"
 
 import axios from "axios"
+
 import API_BASE_URL from "../../services/api"
 
 const ContactForm = () => {
@@ -17,6 +18,7 @@ const ContactForm = () => {
   const [success, setSuccess] = useState("")
 
   const handleChange = (e) => {
+
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -50,24 +52,38 @@ const ContactForm = () => {
       setSuccess("Failed to send message.")
 
     } finally {
+
       setLoading(false)
     }
   }
 
   return (
+
     <form
       onSubmit={handleSubmit}
       className="
+        w-full
+        max-w-4xl
+        mx-auto
         bg-white/5
         border
         border-white/10
         backdrop-blur-xl
         rounded-3xl
-        p-8
+        p-5
+        sm:p-8
+        overflow-hidden
       "
     >
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div
+        className="
+          grid
+          grid-cols-1
+          md:grid-cols-2
+          gap-5
+        "
+      >
 
         <input
           type="text"
@@ -77,6 +93,7 @@ const ContactForm = () => {
           onChange={handleChange}
           required
           className="
+            w-full
             bg-black/20
             border
             border-white/10
@@ -96,6 +113,7 @@ const ContactForm = () => {
           onChange={handleChange}
           required
           className="
+            w-full
             bg-black/20
             border
             border-white/10
@@ -155,27 +173,44 @@ const ContactForm = () => {
         disabled={loading}
         className="
           mt-8
+          w-full
+          sm:w-auto
           bg-primary
           text-black
           px-8
           py-4
-          rounded-full
+          rounded-2xl
           font-semibold
-          hover:scale-105
-          transition
+          hover:scale-[1.02]
+          active:scale-95
+          transition-all
+          duration-300
           disabled:opacity-50
+          flex
+          items-center
+          justify-center
         "
       >
 
         {
-          loading ? "Sending..." : "Send Message"
+          loading
+            ? "Sending..."
+            : "Send Message"
         }
 
       </button>
 
       {
         success && (
-          <p className="mt-6 text-primary">
+
+          <p
+            className="
+              mt-6
+              text-primary
+              text-sm
+              sm:text-base
+            "
+          >
             {success}
           </p>
         )

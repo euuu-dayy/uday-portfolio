@@ -1,44 +1,28 @@
-import { motion } from "framer-motion"
+import ContactContent from "../components/contact/ContactContent"
 
-import ContactInfo from "./ContactInfo"
-import ContactForm from "./ContactForm"
+const ContactSection = () => {
 
-const ContactContent = () => {
   return (
-    <div className="max-w-7xl mx-auto px-6">
+    <section
+      id="contact"
+      className="
+        relative
+        py-24
+        px-4
+        sm:px-6
+        bg-gradient-to-b
+        from-[#050816]
+        to-black
+        overflow-hidden
+      "
+    >
 
-      <div className="grid lg:grid-cols-2 gap-20 items-center">
-
-        {/* Left */}
-
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-
-          <ContactInfo />
-
-        </motion.div>
-
-        {/* Right */}
-
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-
-          <ContactForm />
-
-        </motion.div>
-
+      <div className="max-w-5xl mx-auto w-full">
+        <ContactContent />
       </div>
 
-    </div>
+    </section>
   )
 }
 
-export default ContactContent
+export default ContactSection

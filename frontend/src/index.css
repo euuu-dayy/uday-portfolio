@@ -26,6 +26,13 @@ body{
   overflow-x:hidden;
 }
 
+img,
+video,
+canvas,
+iframe{
+  max-width:100%;
+}
+
 ::-webkit-scrollbar{
   width:8px;
 }
