@@ -13,6 +13,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
+      "https://your-vercel-url.vercel.app",
     ],
     credentials: true,
   })
