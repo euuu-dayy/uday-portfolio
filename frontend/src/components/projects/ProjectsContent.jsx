@@ -5,6 +5,7 @@ import ProjectCard from "./ProjectCard"
 import pdfchat from "../../assets/projects/pdfchat.png"
 import aidb from "../../assets/projects/aidb.png"
 import farmfleet from "../../assets/projects/farmfleet.png"
+import notavailable from "../../assets/projects/notavailable.png"
 
 const projects = [
   
