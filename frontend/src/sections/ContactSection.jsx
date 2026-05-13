@@ -1,6 +1,7 @@
-import ContactContent from "../components/contact/ContactContent";
+import ContactContent from "../components/contact/ContactContent"
 
 const ContactSection = () => {
+
   return (
     <section
       id="contact"
@@ -15,9 +16,13 @@ const ContactSection = () => {
         overflow-hidden
       "
     >
-      <ContactContent />
-    </section>
-  );
-};
 
-export default ContactSection;
+      <div className="max-w-5xl mx-auto w-full">
+        <ContactContent />
+      </div>
+
+    </section>
+  )
+}
+
+export default ContactSection

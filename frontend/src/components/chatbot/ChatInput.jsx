@@ -28,7 +28,6 @@ const ChatInput = ({
         flex-col
         sm:flex-row
         gap-3
-        md:gap-4
         pt-4
         border-t
         border-white/10
@@ -68,21 +67,23 @@ const ChatInput = ({
         className="
           w-full
           sm:w-auto
-          min-w-[120px]
+          sm:min-w-[130px]
+          h-[56px]
           bg-primary
           text-black
-          px-6
-          py-4
           rounded-2xl
           font-semibold
           transition-all
           duration-300
-          hover:scale-[1.03]
+          hover:scale-[1.02]
           active:scale-95
           disabled:opacity-50
           flex
           items-center
           justify-center
+          px-6
+          text-sm
+          sm:text-base
         "
       >
 
