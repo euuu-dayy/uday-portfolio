@@ -15,16 +15,51 @@ router.post("/", async (req, res) => {
       message,
     } = req.body
 
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
+    /* DEBUG ENV */
 
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    })
+    console.log(
+      "EMAIL USER:",
+      process.env.EMAIL_USER
+    )
+
+    console.log(
+      "EMAIL PASS EXISTS:",
+      !!process.env.EMAIL_PASS
+    )
+
+    /* CREATE TRANSPORTER */
+
+    const transporter =
+      nodemailer.createTransport({
+
+        host: "smtp.gmail.com",
+
+        port: 465,
+
+        secure: true,
+
+        auth: {
+          user: process.env.EMAIL_USER,
+          pass: process.env.EMAIL_PASS,
+        },
+      })
+
+    console.log(
+      "TRANSPORTER CREATED"
+    )
+
+    /* VERIFY SMTP */
+
+    await transporter.verify()
+
+    console.log(
+      "SMTP VERIFIED"
+    )
+
+    /* MAIL OPTIONS */
 
     const mailOptions = {
+
       from: process.env.EMAIL_USER,
 
       to: process.env.EMAIL_USER,
@@ -69,22 +104,37 @@ router.post("/", async (req, res) => {
         </div>
 
       </div>
-      
       `,
     }
 
-    await transporter.sendMail(mailOptions)
+    /* SEND EMAIL */
+
+    await transporter.sendMail(
+      mailOptions
+    )
+
+    console.log(
+      "EMAIL SENT SUCCESSFULLY"
+    )
 
     res.json({
-      message: "Message sent successfully.",
+      message:
+        "Message sent successfully.",
     })
 
   } catch (error) {
 
+    console.log(
+      "FULL EMAIL ERROR:"
+    )
+
     console.log(error)
 
+    console.log(error.message)
+
     res.status(500).json({
-      message: "Failed to send message.",
+      message:
+        "Failed to send message.",
     })
   }
 })
