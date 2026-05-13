@@ -1,65 +1,43 @@
-const express = require("express")
+const express = require("express");
 
-const router = express.Router()
+const router = express.Router();
 
-const nodemailer = require("nodemailer")
+const nodemailer = require("nodemailer");
 
 router.post("/", async (req, res) => {
-
   try {
-
-    const {
-      name,
-      email,
-      company,
-      message,
-    } = req.body
+    const { name, email, company, message } = req.body;
 
     /* DEBUG ENV */
 
-    console.log(
-      "EMAIL USER:",
-      process.env.EMAIL_USER
-    )
+    console.log("EMAIL USER:", process.env.EMAIL_USER);
 
-    console.log(
-      "EMAIL PASS EXISTS:",
-      !!process.env.EMAIL_PASS
-    )
+    console.log("EMAIL PASS EXISTS:", !!process.env.EMAIL_PASS);
 
     /* CREATE TRANSPORTER */
 
-    const transporter =
-      nodemailer.createTransport({
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
 
-        host: "smtp.gmail.com",
+      port: 587,
 
-        port: 465,
+      secure: false,
 
-        secure: true,
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+      },
 
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS,
-        },
-      })
+      tls: {
+        rejectUnauthorized: false,
+      },
+    });
 
-    console.log(
-      "TRANSPORTER CREATED"
-    )
-
-    /* VERIFY SMTP */
-
-    await transporter.verify()
-
-    console.log(
-      "SMTP VERIFIED"
-    )
+    await transporter.sendMail(mailOptions);
 
     /* MAIL OPTIONS */
 
     const mailOptions = {
-
       from: process.env.EMAIL_USER,
 
       to: process.env.EMAIL_USER,
@@ -105,38 +83,28 @@ router.post("/", async (req, res) => {
 
       </div>
       `,
-    }
+    };
 
     /* SEND EMAIL */
 
-    await transporter.sendMail(
-      mailOptions
-    )
+    await transporter.sendMail(mailOptions);
 
-    console.log(
-      "EMAIL SENT SUCCESSFULLY"
-    )
+    console.log("EMAIL SENT SUCCESSFULLY");
 
     res.json({
-      message:
-        "Message sent successfully.",
-    })
-
+      message: "Message sent successfully.",
+    });
   } catch (error) {
+    console.log("FULL EMAIL ERROR:");
 
-    console.log(
-      "FULL EMAIL ERROR:"
-    )
+    console.log(error);
 
-    console.log(error)
-
-    console.log(error.message)
+    console.log(error.message);
 
     res.status(500).json({
-      message:
-        "Failed to send message.",
-    })
+      message: "Failed to send message.",
+    });
   }
-})
+});
 
-module.exports = router
+module.exports = router;
