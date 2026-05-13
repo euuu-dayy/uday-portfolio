@@ -7,68 +7,94 @@ import aidb from "../../assets/projects/aidb.png"
 import farmfleet from "../../assets/projects/farmfleet.png"
 
 const projects = [
-  {
-    title: "PDFChat AI",
-
-    description:
-      "AI-powered document chat system that enables intelligent question-answering over uploaded PDF documents using Groq LLaMA 3.3 integration.",
-
-    image: pdfchat,
-
-    tech: [
-      "React",
-      "Spring Boot",
-      "Groq AI",
-      "MySQL",
-      "PDFBox",
-    ],
-
-    live: "#",
-
-    github: "#",
-  },
+  
 
   {
-    title: "AI DB Assistant",
+  title: "AI DB Assistant",
 
-    description:
-      "Natural language to SQL query platform powered by AI, enabling intelligent enterprise database querying with real-time generated SQL execution.",
+  description:
+    "AI-powered natural language to SQL platform that generates and executes intelligent SQL queries using Groq LLaMA 3.3 with real-time result visualization.",
 
-    image: aidb,
+  image: aidb,
 
-    tech: [
-      "React",
-      "Tailwind",
-      "Groq AI",
-      "Spring Boot",
-      "Docker",
-    ],
+  tech: [
+    "React",
+    "Tailwind",
+    "Spring Boot",
+    "Groq AI",
+    "MySQL",
+    "Docker",
+    "Rest API" //Java, Spring Boot, React.js, Groq AI (LLaMA 3.3), MySQL, REST API
+  ],
 
-    live: "#",
+  live: "https://ai-db-assistant-frontend.vercel.app/",
 
-    github: "#",
-  },
+  github: "https://github.com/euuu-dayy/ai-db-assistant-frontend",
+},
 
-  {
-    title: "FarmFleet",
+{
+  title: "FarmFleet",
 
-    description:
-      "Role-based farm equipment rental management system with JWT authentication, booking lifecycle management, and scalable dashboard architecture.",
+  description:
+    "Role-based farm equipment rental management system with JWT authentication, booking lifecycle management, revenue tracking, and real-time dashboards.",
 
-    image: farmfleet,
+  image: farmfleet,
 
-    tech: [
-      "React",
-      "Node.js",
-      "MongoDB",
-      "JWT",
-      "Tailwind",
-    ],
+  tech: [
+    "React",
+    "Spring Boot",
+    "MySQL",
+    "JWT",
+    "Tailwind",
+  ],
 
-    live: "#",
+  live: "https://farmfleet-equipment-rental.netlify.app/",
 
-    github: "#",
-  },
+  github: "#",
+},
+
+{
+  title: "PDFChat AI",
+
+  description:
+    "AI-powered PDF document chat system enabling intelligent question-answering over uploaded PDFs using Groq LLaMA 3.3 integration.",
+
+  image: pdfchat,
+
+  tech: [
+    "React",
+    "Spring Boot",
+    "Groq AI",
+    "MySQL",
+    "PDFBox",
+  ],
+
+  live: "#",
+
+  github: "#",
+},
+
+{
+  title: "OTP Notification System",
+
+  description:
+    "Microservices-based OTP notification platform using Apache Kafka and Redis for asynchronous real-time OTP delivery and scalable event-driven communication.",
+
+  image: notavailable,
+
+  tech: [
+    "Spring Boot",
+    "Kafka",
+    "Redis",
+    "MySQL",
+    "Docker",
+    "GitHub Actions",
+  ],
+
+  live: "#",
+
+  github: "https://github.com/euuu-dayy/Microservices_Project",
+}
 ]
 
 const ProjectsContent = () => {

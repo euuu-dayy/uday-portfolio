@@ -34,7 +34,7 @@ const ContactInfo = () => {
         </div>
 
         <a
-          href="https://linkedin.com"
+          href="https://www.linkedin.com/in/udaykaple22/"
           target="_blank"
           className="flex items-center gap-4 hover:text-primary transition"
         >
@@ -46,7 +46,7 @@ const ContactInfo = () => {
         </a>
 
         <a
-          href="https://github.com"
+          href="https://github.com/euuu-dayy/"
           target="_blank"
           className="flex items-center gap-4 hover:text-primary transition"
         >
