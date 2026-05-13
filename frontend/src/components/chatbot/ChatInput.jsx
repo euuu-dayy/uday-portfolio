@@ -1,21 +1,34 @@
-import { Send } from "lucide-react"
+import { useState } from "react"
 
 const ChatInput = ({
-  input,
-  setInput,
-  handleSend,
+  onSend,
   loading,
 }) => {
+
+  const [input, setInput] =
+    useState("")
+
+  const handleSubmit = (e) => {
+
+    e.preventDefault()
+
+    if (!input.trim()) return
+
+    onSend(input)
+
+    setInput("")
+  }
 
   return (
 
     <form
-      onSubmit={handleSend}
+      onSubmit={handleSubmit}
       className="
         flex
         flex-col
         sm:flex-row
         gap-3
+        md:gap-4
         pt-4
         border-t
         border-white/10
@@ -24,13 +37,13 @@ const ChatInput = ({
 
       <input
         type="text"
+        placeholder="
+          Ask something about Uday...
+        "
         value={input}
         onChange={(e) =>
           setInput(e.target.value)
         }
-        placeholder="
-          Ask anything about my resume...
-        "
         className="
           flex-1
           w-full
@@ -58,9 +71,9 @@ const ChatInput = ({
           min-w-[120px]
           bg-primary
           text-black
-          rounded-2xl
           px-6
           py-4
+          rounded-2xl
           font-semibold
           transition-all
           duration-300
@@ -70,19 +83,13 @@ const ChatInput = ({
           flex
           items-center
           justify-center
-          gap-2
         "
       >
 
         {
           loading
             ? "Thinking..."
-            : (
-              <>
-                <Send size={18} />
-                Send
-              </>
-            )
+            : "Send"
         }
 
       </button>
